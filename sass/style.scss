@@ -1,0 +1,252 @@
+@use "./mixin" as *;
+@use "./variable" as *;
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+// header
+
+header {
+  min-height: 100vh;
+  @include flex(column, flex-start, center);
+  padding: 1rem 2rem;
+  background-image: url(../images/mobile/image-header.jpg);
+  @include background();
+
+  #navbar {
+    width: 100%;
+    @include flex(row, space-between, center);
+
+    .nav-links {
+      @media screen and (max-width:600px){
+        position: fixed;
+        background-color:white;
+        clip-path: polygon(91.86% 19.39%, 100.76% 7.21%, 100.38% 50.65%, 99.62% 99.02%, 0px 100%, 3px 20.06%);
+        transform: translate(10px , 170px);
+        list-style-type: none;
+        padding: 4rem 1rem;
+        width: 70vw;
+        height: 51vh;
+        transition: clip-path 0.8s ease-out;
+        & li {
+          transition: translate(50px ,50px);
+          
+          margin: 25px 80px;
+        }
+        & li a {
+          text-decoration: none;
+        }
+        
+      }
+
+    
+
+      @media screen and (min-width: 600px) {
+        @include flex(row, space-between, flex-start);
+       list-style: none;
+
+        & li {
+          padding: 8px 16px;
+        }
+        & li a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  h1 {
+    margin-top: 5rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+    color: $white;
+    text-align: center;
+    @media screen and (min-width:600px) {
+      font-size: 3rem;
+    }
+  }
+
+  img {
+    margin-top: 5rem;
+  }
+
+  .hamburger {
+    display: block;
+    background: transparent;
+    border: none;
+    width: 30px;
+
+    .bar {
+      border: 2px solid black;
+      margin-top: 5px;
+    }
+
+    @media screen and(min-width:600px) {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width:600px){
+    background-image: url(../images/desktop/image-header.jpg);
+  }
+}
+
+
+.hide{
+    display: none;
+}
+
+
+// about
+
+#about {
+  min-height: 100vh;
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    grid-auto-rows: 50%;
+
+    .card {
+      padding: 12rem 4rem;
+
+      h1{
+        font-size: 2rem;
+      }
+      p{
+        font-size: 1rem;
+        margin: 20px 0px;
+      }
+      button{
+        font-size: 1rem;
+        background: transparent;
+        border: none;
+        border-bottom:2px solid black ;
+      }
+
+    }
+
+    #card2 {
+      background-image: url(../images/desktop/image-transform.jpg);
+      @include background();
+    }
+
+    #card3 {
+      background-image: url(../images/desktop/image-stand-out.jpg);
+      @include background();
+    }
+
+    #card5 {
+      background-image: url(../images/desktop/image-graphic-design.jpg);
+      @include background();
+    }
+
+    #card6 {
+      background-image: url(../images/desktop/image-photography.jpg);
+      @include background();
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .card-container {
+      grid-template-columns: repeat(2, minmax(50%, 1fr));
+      grid-template-rows: repeat(3, auto);
+    }
+  }
+}
+
+// services
+#services {
+  @extend header;
+  background: none;
+
+  h1 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: black;
+  }
+  .box-container {
+    @include flex(column, center, center);
+  }
+  .box {
+    @include flex(column, space-between, center);
+    margin: 2rem;
+
+    img {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+    }
+    p {
+      margin: 2rem 0rem;
+      text-align: center;
+    }
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    h4 {
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .box-container {
+      @include flex(row, center, center);
+    }
+  }
+}
+
+#projects {
+  .img-container {
+    @include flex(row, center, center);
+    img {
+      max-width: 25%;
+      height: auto;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .img-container {
+      flex-wrap: wrap;
+
+      img {
+        max-width: 50%;
+        height: auto;
+      }
+    }
+  }
+}
+
+#contact {
+  min-height: 40vh;
+  @include flex(column, space-around, center);
+
+  ul {
+    @include flex(row, space-between, center);
+    list-style: none;
+    width: 20vw;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    min-height: 30vh;
+
+    ul {
+      width: 10rem;
+    }
+  }
+}
